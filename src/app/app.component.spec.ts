@@ -1,10 +1,12 @@
 import { TestBed } from '@angular/core/testing';
+import { appConfig } from './app.config';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppComponent],
+      providers: [...appConfig.providers],
     }).compileComponents();
   });
 
@@ -20,10 +22,10 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('angular-pw-5');
   });
 
-  it('should render title', () => {
+  it('should render the header', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, angular-pw-5');
+    expect(compiled.textContent).toContain('Home Banking');
   });
 });
